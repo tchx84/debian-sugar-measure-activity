@@ -1,3 +1,9 @@
+sugar-measure-activity (51-0tch2) UNRELEASED; urgency=low
+
+  * Add missing gstreamer0.10-plugins-good dependency.
+
+ -- Martin Abente Lahaye <tch@sugarlabs.org>  Thu, 29 Apr 2015 16:42:32 -0400
+
 sugar-measure-activity (51-0tch1) UNRELEASED; urgency=low
 
   * Initial release for Debian.

@@ -43,7 +43,7 @@ DEB_COPYRIGHT_CHECK_IGNORE_REGEX = ^data/logo_.*\.png|debian/(changelog|copyrigh
 
 # Needed (always/often/seldom) at runtime
 python-deps = gobject gtk2 cairo gst0.10 sugar-0.98 sugar-toolkit-0.98
-CDBS_DEPENDS_$(pkg) = python, csound, gstreamer0.10-plugins-good
+CDBS_DEPENDS_$(pkg) = python, csound, gstreamer0.10-plugins-good, gstreamer0.10-alsa
 CDBS_DEPENDS_$(pkg) +=, $(patsubst %,$(comma) python-%,$(python-deps))
 CDBS_RECOMMENDS_$(pkg) = sugar-$(DEB_SUGAR_PRIMARY_BRANCH)-icon-theme | sugar-icon-theme | sugar-artwork
 

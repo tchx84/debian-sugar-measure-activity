@@ -1,3 +1,9 @@
+sugar-measure-activity (51-1~quozl1) trusty; urgency=medium
+
+  * add missing GStreamer ALSA dependency
+
+ -- James Cameron <quozl@laptop.org>  Wed, 27 May 2015 13:50:42 +1000
+
 sugar-measure-activity (51-0tch2) UNRELEASED; urgency=low
 
   * Add missing gstreamer0.10-plugins-good dependency.

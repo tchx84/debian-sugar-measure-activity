@@ -1,3 +1,9 @@
+sugar-measure-activity (51-2~0tch1) trusty; urgency=medium
+
+  * Remove dependency on specific sugar-artwork.
+
+ -- Martin Abente Lahaye <tch@sugarlabs.org>  Tue, 21 Jul 2015 16:36:44 -0400
+
 sugar-measure-activity (51-1~quozl1) trusty; urgency=medium
 
   * add missing GStreamer ALSA dependency

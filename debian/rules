@@ -1,7 +1,6 @@
 #!/usr/bin/make -f
-
 # -*- mode: makefile; coding: utf-8 -*-
-# Copyright 2008-2012, 2015 Jonas Smedegaard <dr@jones.dk>
+# Copyright 2015 Jonas Smedegaard <dr@jones.dk>
 # Copyright 2015 Martin Abente Lahaye <tch@sugarlabs.org>
 # Description: Main Debian packaging script for Measure
 #
@@ -18,9 +17,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# Suppress unneeded auto-resolved build-dependency on python-dev
-CDBS_BUILD_DEPENDS_class_python-sugar_python = python$(cdbs_python_nondefault_version)
-
 DEB_PYTHON_SUGAR_PACKAGES = $(DEB_SOURCE_PACKAGE)
 
 include /usr/share/cdbs/1/rules/upstream-tarball.mk
@@ -29,11 +25,13 @@ include /usr/share/cdbs/1/class/python-sugar.mk
 include /usr/share/cdbs/1/rules/debhelper.mk
 
 pkg = $(DEB_SOURCE_PACKAGE)
-DEB_SUGAR_PRIMARY_BRANCH = 0.104
 
 DEB_UPSTREAM_PACKAGE = Measure
 DEB_UPSTREAM_URL = http://download.sugarlabs.org/sources/honey/$(DEB_UPSTREAM_PACKAGE)
 DEB_UPSTREAM_TARBALL_EXTENSION = tar.bz2
+
+# Suppress unneeded auto-resolved build-dependency on python-dev
+CDBS_BUILD_DEPENDS_class_python-sugar_python = python
 
 # Override Sugar toolkit to use
 CDBS_BUILD_DEPENDS_class_python-sugar_sugar = python-sugar-0.98, python-sugar-toolkit-0.98, unzip
@@ -42,15 +40,6 @@ CDBS_BUILD_DEPENDS_class_python-sugar_sugar = python-sugar-0.98, python-sugar-to
 DEB_COPYRIGHT_CHECK_IGNORE_REGEX = ^data/logo_.*\.png|debian/(changelog|copyright(|_hints|_newhints))$
 
 # Needed (always/often/seldom) at runtime
-python-deps = gobject gtk2 cairo gst0.10 sugar-0.98 sugar-toolkit-0.98
 CDBS_DEPENDS_$(pkg) = python, csound, gstreamer0.10-plugins-good, gstreamer0.10-alsa
-CDBS_DEPENDS_$(pkg) +=, $(patsubst %,$(comma) python-%,$(python-deps))
-CDBS_RECOMMENDS_$(pkg) = sugar-$(DEB_SUGAR_PRIMARY_BRANCH)-icon-theme | sugar-icon-theme | sugar-artwork
-
-# Ensure only one variant is installed at a time (Debian Policy 7.6.2)
-# (unneeded since Wheezy: can be dropped after Wheezy+1)
-CDBS_CONFLICTS_$(pkg) = $(DEB_SUGAR_SOURCE_PKGBASE)
-CDBS_REPLACES_$(pkg) = $(DEB_SUGAR_SOURCE_PKGBASE)
-
-clean::
-	rm -rf locale
+CDBS_DEPENDS_$(pkg) +=, python-gobject, python-gtk2, python-cairo, python-gst0.10
+CDBS_DEPENDS_$(pkg) +=, python-sugar-0.98, python-sugar-toolkit-0.98

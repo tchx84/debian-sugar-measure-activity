@@ -1,3 +1,9 @@
+sugar-measure-activity (51-2~0tch2) trusty; urgency=medium
+
+  * Remove versoned toolkit.
+
+ -- Martin Abente Lahaye <tch@sugarlabs.org>  Thu, 23 Jul 2015 11:06:48 -0400
+
 sugar-measure-activity (51-2~0tch1) trusty; urgency=medium
 
   * Remove dependency on specific sugar-artwork.
